@@ -1,0 +1,14 @@
+Package: net.joedj.exchangepolicycleaner
+Version: 1.0
+Name: ExchangePolicyCleaner
+Author: joedj <exchangepolicycleaner@joedj.net>
+Homepage: http://github.com/joedj/ExchangePolicyCleaner
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Sponsor: thebigboss.org <http://thebigboss.org>
+Depends: mobilesubstrate (>= 0.9.3995), bash, firmware (>= 4.0)
+Architecture: iphoneos-arm
+Description: Ignore Microsoft Exchange ActiveSync policies.
+Section: Tweaks
+Tag: purpose::extension, role::enduser
+dev: joejordan
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=exchangepolicycleanerDp
