@@ -12,16 +12,17 @@
 
 %hook NSBundle
 - (BOOL)load {
-    static BOOL loaded = NO;
-    BOOL result = %orig;
-    if (!loaded && result && (
-            [self.bundleIdentifier isEqualToString:@"com.apple.DAEAS"] ||    // iOS 5
+    BOOL success = %orig;
+    if (success && (
+            [self.bundleIdentifier isEqualToString:@"com.apple.DAEAS"] ||    // iOS 5 and 6
             [self.bundleIdentifier isEqualToString:@"com.yourcompany.DAEAS"] // iOS 4
     )) {
-        loaded = YES;
-        %init(DAEAS);
+        static dispatch_once_t once;
+        dispatch_once(&once, ^{
+            %init(DAEAS);
+        });
     }
-    return result;
+    return success;
 }
 %end
 
