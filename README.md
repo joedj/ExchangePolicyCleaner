@@ -21,7 +21,19 @@ THEOS_DEVICE_IP=1.2.3.4 make package install
 
 Gotchas
 -------
-* Changes will not take effect until you refresh your EAS policy, e.g. by disabling then re-enabling your Exchange account.
+* Changes will not take effect until you refresh your EAS policy, e.g. by disabling then re-enabling your Exchange account.  You can also do this using cycript:
+
+```js
+#!/usr/bin/env cycript -p dataaccessd
+
+(function() {
+    for each (var a in DAAccountManager.sharedInstance.accounts) {
+        if ([a.policyManager respondsToSelector:@selector(requestPolicyUpdate)]) {
+            [a.policyManager requestPolicyUpdate];
+        }
+    }
+})()
+```
 
 
 But I'd rather use cycript
@@ -40,7 +52,7 @@ ASWBXMLPolicy.messages['_cleanUpPolicyData:'] = function(policy) {
     [policy removeAllObjects];
     original_ASWBXMLPolicy_cleanUpPolicyData.call(this, policy);
 }
-````
+```
 
 
 What does an Exchange ActiveSync policy look like?
