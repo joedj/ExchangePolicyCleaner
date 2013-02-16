@@ -1,7 +1,13 @@
-TARGET = iphone:latest:4.0
+TARGET := iphone:clang::4.0
+ARCHS := armv6 armv7
 
-TARGET_STRIP = bin/dsym_and_strip "$(SYSROOT)"
-ADDITIONAL_CFLAGS += -g
+ifdef CCC_ANALYZER_OUTPUT_FORMAT
+  TARGET_CXX = $(CXX)
+  TARGET_LD = $(TARGET_CXX)
+endif
+
+ADDITIONAL_CFLAGS += -g -fvisibility=hidden
+ADDITIONAL_LDFLAGS += -g -x c /dev/null -x none
 
 TWEAK_NAME = ExchangePolicyCleaner
 ExchangePolicyCleaner_FILES = Tweak.xm

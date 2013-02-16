@@ -1,7 +1,0 @@
-#!/bin/sh
-set -e
-sdk="$1"
-shift
-binary="${!#}"
-dsymutil -o "$binary".dSYM "$binary"
-xcrun -sdk "$sdk" strip "$@"
