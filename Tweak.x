@@ -1,3 +1,5 @@
+%config(generator=internal)
+
 %group DAEAS
 %hook ASWBXMLPolicy
 -(void)_cleanUpPolicyData:(NSMutableDictionary *)policy {
@@ -14,7 +16,7 @@
 - (BOOL)load {
     BOOL success = %orig;
     if (success && (
-            [self.bundleIdentifier isEqualToString:@"com.apple.DAEAS"] ||    // iOS 5 and 6
+            [self.bundleIdentifier isEqualToString:@"com.apple.DAEAS"] ||    // iOS 5/6/7
             [self.bundleIdentifier isEqualToString:@"com.yourcompany.DAEAS"] // iOS 4
     )) {
         static dispatch_once_t once;

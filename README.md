@@ -12,7 +12,7 @@ http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=exchangepolicycleaner
 How do I build it?
 ------------------
 
-ExchangePolicyCleaner uses the [Theos](https://github.com/DHowett/theos) Makefile system:
+ExchangePolicyCleaner uses the [Theos](https://github.com/rpetrich/theos) Makefile system:
 
 ```sh
 git clone git://github.com/joedj/ExchangePolicyCleaner.git
