@@ -1,4 +1,0 @@
-#!/bin/sh
-dataaccessd_plist=/System/Library/LaunchDaemons/com.apple.dataaccess.dataaccessd.plist
-launchctl unload "$dataaccessd_plist"
-exit 0
