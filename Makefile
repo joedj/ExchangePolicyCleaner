@@ -1,9 +1,5 @@
-TARGET := iphone:clang
+TARGET := iphone:clang::4.0
 ARCHS := armv6 arm64
-THEOS_PLATFORM_SDK_ROOT_armv6 := /Applications/Xcode4.4.1.app/Contents/Developer
-SDKVERSION_armv6 := 5.1
-TARGET_IPHONEOS_DEPLOYMENT_VERSION := 4.0
-TARGET_IPHONEOS_DEPLOYMENT_VERSION_arm64 := 7.0
 
 ifdef CCC_ANALYZER_OUTPUT_FORMAT
   TARGET_CXX = $(CXX)
@@ -21,3 +17,7 @@ include $(THEOS_MAKE_PATH)/tweak.mk
 
 after-stage::
 	$(ECHO_NOTHING)find $(THEOS_STAGING_DIR) \( -iname '*.plist' -or -iname '*.strings' \) -exec plutil -convert binary1 {} \;$(ECHO_END)
+	$(ECHO_NOTHING)find $(THEOS_STAGING_DIR) -d \( -iname '*.dSYM' -or -iname '*.map' \) -execdir rm -rf {} \;$(ECHO_END)
+
+after-clean::
+	rm -f *.deb
