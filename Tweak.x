@@ -1,3 +1,5 @@
+%config(generator=MobileSubstrate)
+
 %group DAEAS
 %hook ASWBXMLPolicy
 -(void)_cleanUpPolicyData:(NSMutableDictionary *)policy {
